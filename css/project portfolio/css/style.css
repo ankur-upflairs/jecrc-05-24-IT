@@ -1,0 +1,31 @@
+header{
+    background-color: #222;
+    color: #333;
+}
+nav{display: flex;
+justify-content: space-between;
+width: 80%;
+margin: 0 auto;
+}
+ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;   
+    
+}
+ul a{
+    text-decoration: none;
+    color: #aaa;
+}
+.projects{display: flex;
+    flex-wrap: wrap;    
+    margin: 0 auto;
+    justify-content: space-around;
+}
+.project-card{
+    width: calc(50% - 40px);    
+   
+}
+.project-card img{
+    width: 100%;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Student{
+            constructor(name,age){
+                this.name=name
+                this.age=age
+            }
+            showDetails(){
+                console.log(this.name,this.age)
+            }
+        }
+        let student=new Student('aman',23)
+        console.log(student.name)
+        student.showDetails()
+    </script>
+</body>
+</html>

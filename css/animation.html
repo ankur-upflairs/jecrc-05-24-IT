@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name: color;
+            animation-duration: 500ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-direction: alternate;
+            
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name: moveRight;
+            animation-duration: 5s;
+            /* animation-delay: 5s;   */
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes color {
+            from{
+                background-color: red;
+                
+            }
+            to{
+                background-color: blue;
+                transform: translateY(-20px);
+            }
+        }
+        @keyframes moveRight {
+            0%{
+                margin-left: 0px;
+            }
+            50%{  
+                margin-left: 100px;
+                border-radius: 25%;
+                transform: rotate(180deg);
+            }
+            100%{
+                margin-left: 200px;
+                border-radius: 50%;
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <label for="username">username</label>
+        <input type="text" id="username"><span id="nameerror"></span><br>
+        <label for="password">password</label>
+        <input type="password" id="password"><span id="passerror"></span><br>
+        <button type="submit">submit</button>
+    </form>
+    <script>
+        let form=document.querySelector('form')
+        let username=document.querySelector('#username')
+        let password=document.querySelector('#password')
+        form.addEventListener('submit',(event)=>{
+            let usernameValue=username.value
+            let passwordValue=password.value
+            if(usernameValue.length < 5){
+                document.getElementById('nameerror').innerText='name must have more than 5 characters'
+                event.preventDefault();                
+            }
+            else if(passwordValue.length < 4 || passwordValue.length > 8){
+                document.getElementById('passerror').innerText='name must have 4 to 8 characters'
+                event.preventDefault();            
+
+            }
+            else if(passwordValue.includes('_')){
+                document.getElementById('passerror').innerText='_ is not allowed'
+                event.preventDefault();           
+
+            }
+            // console.log(event)
+        }) 
+    </script>
+</body>
+</html>
