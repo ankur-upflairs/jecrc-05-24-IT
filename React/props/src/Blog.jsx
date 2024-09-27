@@ -1,5 +1,17 @@
  import React from 'react'
 
+function Verified(){
+    return (
+        <p className="card-text" style={{color:'green'}} >Verified</p>
+    )
+}
+function NotVerified(){
+    return (
+        <p className="card-text" style={{color:'red'}} >Not Verified</p>
+    )
+}
+
+
 
 function Blog(props) {
     return (
@@ -10,6 +22,7 @@ function Blog(props) {
                         <h5 className="card-title">{props.title}</h5>
                         <p className="card-text">{props.text}</p>
                         <p className="card-text" >By - {props.author}</p>
+                        {props.isApproved?<Verified/>:<NotVerified/>}
                         <a href="#" className="btn btn-primary">Go somewhere</a>
                     </div>
             </div>  

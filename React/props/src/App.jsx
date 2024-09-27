@@ -3,8 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Blogs from './Blogs'
+import Events from './Events'
+import State from './State'
+import Forms from './Forms'
+import Conditional from './Conditional'
 
-
+//todo list => [
+  // {id:1,task:'learn react',done:false},]
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +17,10 @@ function App() {
   return (
     <>
     <Blogs/>
+    {/* <Events /> */}
+    {/* <State/> */}
+    {/* <Forms/> */}
+    {/* <Conditional/> */}
     </>
   )
 }
