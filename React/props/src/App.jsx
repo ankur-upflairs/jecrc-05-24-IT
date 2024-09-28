@@ -7,6 +7,7 @@ import Events from './Events'
 import State from './State'
 import Forms from './Forms'
 import Conditional from './Conditional'
+import DataFetch from './DataFetch'
 
 //todo list => [
   // {id:1,task:'learn react',done:false},]
@@ -16,11 +17,12 @@ function App() {
 
   return (
     <>
-    <Blogs/>
+    {/* <Blogs/> */}
     {/* <Events /> */}
     {/* <State/> */}
     {/* <Forms/> */}
     {/* <Conditional/> */}
+    <DataFetch/>
     </>
   )
 }
