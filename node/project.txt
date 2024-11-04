@@ -1,0 +1,14 @@
+fronend =>
+decide page and layout => figma( designer )
+eg :- all product page , single product page , cart , orders ,user dashboard ,settings ,admin page
+for design search for template for different pages
+
+backend =>
+product , user , admin 
+
+product => 
+name , price , quantity , description , image , category ,brand , specification 
+
+user => name , email , password , address , mob no. , 
+admin => email, password 
+
