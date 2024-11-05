@@ -9,7 +9,9 @@ require('dotenv').config()
 // console.log(process.env)
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    origin:'*'
+}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("uploads"));

@@ -10,6 +10,8 @@ import kid_banner from "./Components/Assets/banner_kids.png";
 import men_banner from "./Components/Assets/banner_mens.png";
 import women_banner from "./Components/Assets/banner_women.png";
 import AdminLogin from './pages/AdminLogin'
+import UserSignup from './pages/UserSignUP'
+import UserLogin from './pages/UserLogin'
 
 function App() {
   
@@ -22,6 +24,8 @@ function App() {
       <Route path='womens' element={<ShopCategory category="women" banner={women_banner} />} />
       <Route path='kids' element={<ShopCategory category="kid" banner={kid_banner} />} />
       <Route path='adminLogin' element={<AdminLogin/>}/>
+      <Route path='signup' element={<UserSignup/>}/>
+      <Route path='login' element={<UserLogin/>}/>
       <Route path='create' element={<AddProduct/>}/>
      </Routes>     
      </BrowserRouter>

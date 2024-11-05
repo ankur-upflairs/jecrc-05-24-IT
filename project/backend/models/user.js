@@ -13,14 +13,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    contact: {
-        address: {
-            type: String,
-        },
-        mob: {
-            type: Number,
-        }
-    },
     cart:[
         {
             type: mongoose.Schema.Types.ObjectId,
