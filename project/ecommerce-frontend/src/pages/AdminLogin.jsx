@@ -23,11 +23,10 @@ const changeHandler = (e) => {
         }
     }
 
-
   return (
     <div className="loginsignup">
       <div className="loginsignup-container">
-        <h1>{state}</h1>
+        
         <div className="loginsignup-fields">
           
           <input name='email' value={formData.email} onChange={changeHandler} type="email" placeholder='Email Address' />

@@ -7,7 +7,7 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <Link to="/admin/addproduct" style={{ textDecoration: "none" }}>
+      <Link to="/admin/create" style={{ textDecoration: "none" }}>
         <div className="sidebar-item">
           <img src={productcart} />
           <p>Add Product</p>
