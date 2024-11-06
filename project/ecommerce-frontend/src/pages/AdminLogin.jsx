@@ -14,6 +14,7 @@ const changeHandler = (e) => {
 }
     async function login() {
         let res=await axios.post('http://localhost:3001/admin/login')
+        console.log(res.data)
         if(res.data.status=='success'){
             localStorage.setItem('adminToken',res.data.token)
             window.location.replace('/')
@@ -32,7 +33,7 @@ const changeHandler = (e) => {
           <input name='email' value={formData.email} onChange={changeHandler} type="email" placeholder='Email Address' />
           <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Password' />
         </div>
-        <button  >Login</button>        
+        <button onClick={login}  >Login</button>        
       <div className="loginsignup-agree">
         <input type="checkbox" name='' id='' />
         <p>By continuing, I agree to the terms of use and privacy policy.</p>

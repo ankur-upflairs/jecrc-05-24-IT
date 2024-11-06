@@ -25,8 +25,8 @@ const AddProduct = () => {
   };
 
   const addProductHandler = async () => {
-    console.log("Adding product", productDetails);
-    console.log("image=", image);
+    // console.log("Adding product", productDetails);
+    // console.log("image=", image);
     const formData = new FormData();
     formData.append("name", productDetails.name);
     formData.append("category", productDetails.category);
@@ -39,7 +39,12 @@ const AddProduct = () => {
     formData.append("image", image);
 
     // Send multipart form data to the server =>
-      let res=await axios.post('http://localhost:3001/product/',formData)
+      let res=await axios.post('http://localhost:3001/product/',formData,{
+        headers:{
+          Authorization:localStorage.getItem('adminToken')
+        }
+      })
+
       // console.log(res.data)
     // const response = await fetch("http://localhost:4000/products/add", {
     //   method: "POST",

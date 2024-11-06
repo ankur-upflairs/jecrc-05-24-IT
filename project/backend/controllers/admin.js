@@ -7,7 +7,7 @@ exports.login=async (req,res)=>{
     let admin= await Admin.find({email})
     if(admin){
         if(password==admin.password){
-            let token=jwt.sign({id:admin._id},process.env.SECRET_KEY)
+            let token=jwt.sign({email},process.env.SECRET_KEY)
             res.json({
                 status:'success',
                 token:token

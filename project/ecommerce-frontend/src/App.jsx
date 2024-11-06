@@ -29,7 +29,7 @@ function App() {
           <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='signup' element={<UserSignup />} />
           <Route path='login' element={<UserLogin />} />
-          <Route path='admin' element={<Protected Comp={<Admin/>}/>}>
+          <Route path='admin' element={<Protected Comp={Admin}/>}>
             <Route path='create' element={<AddProduct />} />
             <Route path="listproduct" element={<ListProduct />} />
           </Route>
