@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import cross_icon from "../Assets/Admin/cross_icon.png";
 import "./ListProduct.css";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const navigate=useNavigate()
 
   const fetchInfo = async () => {
-    const res = await fetch("http://localhost:4000/products");
-    const products = await res.json();
-    setAllProducts(products);
+    const res =await axios.get('http://localhost:3001/product')
+    setAllProducts(res.data.products);
   };
 
   useEffect(() => {
@@ -16,15 +18,18 @@ const ListProduct = () => {
   }, []);
 
   const removeProduct = async (id) => {
-    await fetch("http://localhost:4000/products/delete", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    });
-    await fetchInfo();
+    let res=await axios.delete(`http://localhost:3001/product/${id}`,{
+      headers:{
+        Authorization:localStorage.getItem('adminToken')
+      }
+    })
+    if(res.data.status=='failed'){
+      localStorage.removeItem('adminToken')
+      navigate('/')
+    }
+    else{
+      window.location.reload()
+    }
   };
 
   return (
@@ -41,14 +46,15 @@ const ListProduct = () => {
       <div className="listproduct-allproducts">
         <hr />
         {allProducts.map((product) => {
+          // console.log(product._id)
           return (
             <>
               <div
-                key={product.id}
+                key={product._id}
                 className="listproduct-format-main listproduct-format"
               >
                 <img
-                  src={`data:${product.image.contentType};base64,${product.image.data}`}
+                  src={`http://localhost:3001/${product.image}`}
                   alt=""
                   className="listproduct-product-icon"
                 />
@@ -60,7 +66,7 @@ const ListProduct = () => {
                   src={cross_icon}
                   alt=""
                   className="listproduct-remove-icon"
-                  onClick={() => removeProduct(product.id)}
+                  onClick={() => removeProduct(product._id)}
                 />
               </div>
               <hr />

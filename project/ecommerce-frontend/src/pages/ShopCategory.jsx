@@ -3,6 +3,7 @@ import dropdown_icon from "../Components/Assets/dropdown_icon.png";
 import Item from "../components/Item/Item"
 
 import axios from "axios";
+import Navbar from "../components/Navbar/Navbar";
 
 const ShopCategory = (props) => {
     const [products,setProducts]=useState([])
@@ -18,6 +19,8 @@ const ShopCategory = (props) => {
   },[])
 //   console.log(products)
   return (
+    <>
+    <Navbar/>
     <div className="shop-category">
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
@@ -48,6 +51,7 @@ const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-loadmore">Explore More</div>
     </div>
+    </>
   );
 };
 

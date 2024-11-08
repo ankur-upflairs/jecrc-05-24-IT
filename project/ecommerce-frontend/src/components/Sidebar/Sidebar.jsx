@@ -5,6 +5,9 @@ import productlist from "../Assets/Admin/Product_list_icon.svg";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  function logout(){
+    localStorage.removeItem('adminToken')
+  }
   return (
     <div className="sidebar">
       <Link to="/admin/create" style={{ textDecoration: "none" }}>
@@ -17,6 +20,11 @@ const Sidebar = () => {
         <div className="sidebar-item">
           <img src={productlist} />
           <p>Product List</p>
+        </div>
+      </Link>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div className="sidebar-item" onClick={logout}>
+          <p>log out</p>
         </div>
       </Link>
     </div>
