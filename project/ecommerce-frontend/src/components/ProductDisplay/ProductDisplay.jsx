@@ -1,26 +1,28 @@
 import React, { useContext } from "react";
-import { ShopContext } from "../../Context/ShopContext";
+
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import star_icon from "../Assets/star_icon.png";
 import "./ProductDisplay.css";
 
 const ProductDisplay = (props) => {
   const { product } = props;
-  const image = `data:${product.image.contentType};base64,${product.image.data}`;
-
-  const { addToCart } = useContext(ShopContext);
+  // console.log(product)
+  const image = product.image; 
+  async function addToCart(){
+    
+  }
 
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
         <div className="productdisplay-img-list">
-          <img src={image} alt="" />
-          <img src={image} alt="" />
-          <img src={image} alt="" />
-          <img src={image} alt="" />
+          <img src={`http://localhost:3001/${image}`} alt="" />
+          <img src={`http://localhost:3001/${image}`} alt="" />
+          <img src={`http://localhost:3001/${image}`} alt="" />
+          <img src={`http://localhost:3001/${image}`} alt="" />
         </div>
         <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={image} alt="" />
+          <img className="productdisplay-main-img" src={`http://localhost:3001/${image}`} alt="" />
         </div>
       </div>
       <div className="productdisplay-right">
@@ -38,8 +40,7 @@ const ProductDisplay = (props) => {
           <div className="productdisplay-right-price-new">{`\u20B9${product.newPrice}`}</div>
         </div>
         <div className="productdisplay-right-description">
-          This slim-fit bomber jacket features a solid green color and a
-          full-zip closure for easy on and off.
+         {product.description}
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
@@ -53,7 +54,7 @@ const ProductDisplay = (props) => {
         </div>
         <button
           onClick={() => {
-            addToCart(product.id);
+            addToCart();
           }}
         >
           ADD TO CART

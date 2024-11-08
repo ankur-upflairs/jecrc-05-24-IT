@@ -13,12 +13,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cart:[
+    cart: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Product"
-        }
-    ]
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product', // Reference to the Product model
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true,
+                min: 1
+            }
+        }]
 });
 
-module.exports=mongoose.model('User',userSchema)
+module.exports = mongoose.model('User', userSchema)

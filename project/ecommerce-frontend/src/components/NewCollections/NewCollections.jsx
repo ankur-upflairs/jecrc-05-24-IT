@@ -22,7 +22,7 @@ const NewCollections = () => {
           return (
             <Item
               key={item.id}
-              id={item.id}
+              id={item._id}
               name={item.name}
               image={item.image}
               newPrice={item.newPrice}

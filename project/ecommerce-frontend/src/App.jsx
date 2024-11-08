@@ -16,6 +16,7 @@ import UserLogin from './pages/UserLogin'
 import Admin from './pages/Admin/Admin'
 import Protected from './protectedRoutes/Protected'
 import Cart from './pages/Cart'
+import Product from './pages/Product'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="listproduct" element={<ListProduct />} />
           </Route>
           <Route path='cart' element={<Cart/>}/>
+        <Route path='product/:productId' element={<Product/>} />
         </Routes>
       </BrowserRouter>
     </>

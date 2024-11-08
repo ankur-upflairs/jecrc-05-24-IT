@@ -1,6 +1,6 @@
 import React from "react";
 import data_product from "../Assets/data";
-import Item from "../Item/Item";
+import Item from "../Item/Item.jsx";
 import "./RelatedProducts.css";
 
 const RelatedProducts = () => {
