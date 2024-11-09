@@ -1,10 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import remove_icon from "../Assets/cart_cross_icon.png";
 import "./CartItems.css";
+import axios from "axios";
 
 const CartItems = () => {
-  
+  let [cart, setCart] = useState([])
+  useEffect(() => {
+    async function getCart() {
+      let res = await axios.get('http://localhost:3001/cart/', {
+        headers: { Authorization: localStorage.getItem('userToken') }
+      })
+      setCart(res.data.cart)
+    }
+    getCart()
+  }, [])
+  function getTotalCartAmount(){
+    let amount=0
+    cart.forEach(v=>{
+      amount+=(v.product.newPrice * v.quantity)
+    })
+    return amount
+  }
+  async function removeFromCart(id){
+    let res= await axios.delete(`http://localhost:3001/cart/${id}`,{
+      headers:{
+        Authorization:localStorage.getItem('userToken')
+      }
+    })
+    console.log(res.data)
+    window.location.reload()
+  }
+
+
+  if (cart.length == 0) {
+    return <h1>NO item in cart</h1>
+  }
+
   return (
     <div className="cartitems">
       <div className="cartitems-format-main">
@@ -16,38 +48,35 @@ const CartItems = () => {
         <p>Remove</p>
       </div>
       <hr />
-      {all_product.map((e) => {
-        if (cartItems[e.id] > 0) {
-          return (
-            <div key={e.id}>
-              <div className="cartitems-format cartitems-format-main">
-                <img
-                  src={`data:${e.image.contentType};base64,${e.image.data}`}
-                  alt=""
-                  className="carticon-product-icon"
-                />
-                <p>{e.name}</p>
-                <p>{`\u20B9${e.newPrice}`}</p>
-                <button className="cartitems-quantity">
-                  {cartItems[e.id]}
-                </button>
-                <p>{`\u20B9${e.newPrice * cartItems[e.id]}`}</p>
-                <img
-                  className="cartitems-remove-icon"
-                  src={remove_icon}
-                  onClick={() => {
-                    // removeFromCart(e.id);
-                  }}
-                  alt=""
-                />
-              </div>
-              <hr />
-
-            
+      {cart.map((e) => {
+        return (
+          <div key={e.product._id}>
+            <div className="cartitems-format cartitems-format-main">
+              <img
+                src={`http://localhost:3001/${e.product.image}`}
+                alt=""
+                className="carticon-product-icon"
+              />
+              <p>{e.name}</p>
+              <p>{`\u20B9${e.product.newPrice}`}</p>
+              <button className="cartitems-quantity">
+                {e.quantity}
+              </button>
+              
+              <img
+                className="cartitems-remove-icon"
+                src={remove_icon}
+                onClick={() => {
+                  removeFromCart(e.product._id);
+                }}
+                alt=""
+              />
             </div>
-          );
-        }
-        return null;
+            <hr />
+
+
+          </div>
+        );
       })}
       <div className="cartitems-down">
         <div className="cartitems-total">
@@ -55,8 +84,7 @@ const CartItems = () => {
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
-              <p>{`\u20B9${
-                getTotalCartAmount()
+              <p>{`\u20B9${getTotalCartAmount()
                 }`}</p>
             </div>
             <hr />

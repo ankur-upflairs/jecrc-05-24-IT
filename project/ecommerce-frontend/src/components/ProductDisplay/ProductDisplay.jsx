@@ -3,13 +3,29 @@ import React, { useContext } from "react";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import star_icon from "../Assets/star_icon.png";
 import "./ProductDisplay.css";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const ProductDisplay = (props) => {
+  const navigate=useNavigate()
   const { product } = props;
   // console.log(product)
   const image = product.image; 
   async function addToCart(){
-    
+    let res= await axios.get(`http://localhost:3001/cart/${product._id}`,{
+      headers:{
+        Authorization:localStorage.getItem('userToken')
+      }
+    })
+    console.log(res.data)
+    if(res.data.status=='failed'){
+      localStorage.removeItem('userToken')
+    }
+    else{
+      // navigate('/')
+      alert('product added to cart')
+      
+    }
   }
 
   return (

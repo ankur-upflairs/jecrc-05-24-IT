@@ -17,6 +17,8 @@ import Admin from './pages/Admin/Admin'
 import Protected from './protectedRoutes/Protected'
 import Cart from './pages/Cart'
 import Product from './pages/Product'
+import UserProtected from './protectedRoutes/UserProtected'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -35,9 +37,10 @@ function App() {
             <Route path='create' element={<AddProduct />} />
             <Route path="listproduct" element={<ListProduct />} />
           </Route>
-          <Route path='cart' element={<Cart/>}/>
+          <Route path='cart' element={<UserProtected Comp={Cart}/>}/>
         <Route path='product/:productId' element={<Product/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )

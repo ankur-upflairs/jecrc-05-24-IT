@@ -11,7 +11,7 @@ function Home() {
             <Hero />
             <Offers />
             <NewCollections />
-            {/* <NewsLetter/> */}
+            <NewsLetter/>
         </div>
     )
 }
